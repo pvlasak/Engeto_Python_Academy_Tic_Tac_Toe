@@ -110,7 +110,7 @@ def check_pr_dg(current_player_id, board):
         count = check_list.count(player_symbols[current_player_id])
         if count == 3:
             result = True
-        break
+            break
     return result
 
 
