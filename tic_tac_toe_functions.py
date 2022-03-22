@@ -55,7 +55,8 @@ def update_sq_board(current_player_id: int, board: list) -> list:
                 lst_of_pos.pop(lst_of_pos.index(int(number)))
                 verification = False
             else:
-                print("Position number is already occupied. Select a new number.")
+                print("Position number is already occupied. "
+                      "Select a new number.")
         else:
             print("Input is not numeric or has more than 2 digits.")
     return board
@@ -70,8 +71,11 @@ def switch_player(current_player_id: int) -> int:
 
 
 def check_winner(current_player_id: int, board: list) -> bool:
-    winner = [check_rows(current_player_id, board), check_cols(current_player_id, board),
-              check_pr_dg(current_player_id, board), check_sec_dg(current_player_id, board)]
+    winner = [check_rows(current_player_id, board),
+              check_cols(current_player_id, board),
+              check_pr_dg(current_player_id, board),
+              check_sec_dg(current_player_id, board)
+              ]
     if True in winner:
         status = True
     else:
