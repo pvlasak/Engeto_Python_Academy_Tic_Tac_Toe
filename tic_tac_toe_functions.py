@@ -17,10 +17,11 @@ board_dm = "+-+-+-+"
 lst_of_pos = [pos + 1 for pos in range(dimension ** 2)]
 player_names = ('Player X', 'Player O')
 player_ids = [pid for pid in range(num_players)]
+print(type(player_ids[0]))
 player_symbols = ['x', 'o']
 
 
-def create_sq_board():
+def create_sq_board() -> list:
     board = []
     for i in range(dimension):
         line = []
@@ -30,7 +31,7 @@ def create_sq_board():
     return board
 
 
-def plot_sq_board(board):
+def plot_sq_board(board: list):
     board_plt = []
     for line in range(dimension):
         board_plt.append("|".join(board[line]))
@@ -39,7 +40,7 @@ def plot_sq_board(board):
         print(f"|{board_plt[row]}|")
 
 
-def update_sq_board(current_player_id, board):
+def update_sq_board(current_player_id: int, board: list) -> list:
     print(delimiter)
     verification = True
     while verification:
@@ -60,7 +61,7 @@ def update_sq_board(current_player_id, board):
     return board
 
 
-def switch_player(current_player_id):
+def switch_player(current_player_id: int) -> int:
     if current_player_id % num_players == 0:
         next_plr_id = 1
     else:
@@ -68,7 +69,7 @@ def switch_player(current_player_id):
     return next_plr_id
 
 
-def check_winner(current_player_id, board):
+def check_winner(current_player_id: int, board: list) -> bool:
     winner = [check_rows(current_player_id, board), check_cols(current_player_id, board),
               check_pr_dg(current_player_id, board), check_sec_dg(current_player_id, board)]
     if True in winner:
@@ -78,7 +79,7 @@ def check_winner(current_player_id, board):
     return status
 
 
-def check_rows(current_player_id, board):
+def check_rows(current_player_id: int, board: list) -> bool:
     result = False
     for i in range(dimension):
         check_list = board[i]
@@ -89,7 +90,7 @@ def check_rows(current_player_id, board):
     return result
 
 
-def check_cols(current_player_id, board):
+def check_cols(current_player_id: int, board: list) -> bool:
     result = False
     for j in range(dimension):
         check_list = []
@@ -102,7 +103,7 @@ def check_cols(current_player_id, board):
     return result
 
 
-def check_pr_dg(current_player_id, board):
+def check_pr_dg(current_player_id: int, board: list) -> bool:
     check_list = []
     result = False
     for i in range(dimension):
@@ -114,7 +115,7 @@ def check_pr_dg(current_player_id, board):
     return result
 
 
-def check_sec_dg(current_player_id, board):
+def check_sec_dg(current_player_id: int, board: list) -> bool:
     check_list = []
     result = False
     for i in range(dimension):
